@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía Interactiva · Plan 01/07 · 1. Periodismo · 5to. Bachillerato en Mercadotecnia 2027</title>
+  <style>
+    :root {
+      --azul: #1269A8;
+      --amarillo: #F7D615;
+      --verde-gris: #54887D;
+      --azul-claro: #88B5C7;
+      --oliva: #A6B046;
+      --fondo: #F2F5E9;
+      --texto: #1e293b;
+      --blanco: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      padding: 16px;
+      line-height: 1.55;
+    }
+    .marco {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: var(--blanco);
+      border: 3px solid var(--amarillo);
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(18, 105, 168, 0.14);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--azul) 0%, #0d4f80 100%);
+      color: var(--blanco);
+      padding: 18px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 4px solid var(--amarillo);
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1 1 540px;
+    }
+    .logo-badge {
+      min-width: 72px;
+      height: 68px;
+      background: var(--blanco);
+      color: var(--azul);
+      border-radius: 10px;
+      padding: 6px 10px;
+      border: 2px solid var(--amarillo);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-align: center;
+      line-height: 1.15;
+    }
+    .inst-tag {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--amarillo);
+      font-weight: 700;
+    }
+    .header h1 {
+      font-size: 1.28rem;
+      font-weight: 700;
+      margin: 3px 0;
+    }
+    .header p {
+      font-size: 0.9rem;
+      opacity: 0.94;
+    }
+    .btn-fs {
+      background: var(--amarillo);
+      color: #102a43;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .sub-bar {
+      background: #e8f1f7;
+      padding: 10px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      border-bottom: 2px solid var(--azul-claro);
+    }
+    .date-input {
+      border: 1px solid var(--azul);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      color: var(--texto);
+      background: var(--blanco);
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      background: #dce8ef;
+      padding: 8px 16px 0 16px;
+      gap: 6px;
+      border-bottom: 3px solid var(--azul);
+    }
+    .tab-btn {
+      background: var(--blanco);
+      color: var(--azul);
+      border: 2px solid var(--azul-claro);
+      border-bottom: none;
+      padding: 10px 18px;
+      border-radius: 10px 10px 0 0;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .tab-btn.active {
+      background: var(--azul);
+      color: var(--blanco);
+      border-color: var(--azul);
+    }
+    .tab-panel {
+      display: none;
+      padding: 22px 24px;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    .section-sub {
+      color: var(--azul);
+      font-size: 1.08rem;
+      margin: 18px 0 10px 0;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--amarillo);
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .card {
+      background: var(--blanco);
+      border: 2px solid var(--verde-gris);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      color: var(--verde-gris);
+      margin: 6px 0;
+      font-size: 1.05rem;
+    }
+    .card-ejemplo {
+      background: var(--blanco);
+      border: 2px solid var(--verde-gris);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .card-ejemplo h4, .card-ejercicio h4 {
+      color: var(--azul);
+      margin: 6px 0;
+      font-size: 0.98rem;
+    }
+    .card-ejercicio {
+      background: rgba(136, 181, 199, 0.22);
+      border: 2px solid var(--azul-claro);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .badge-nivel {
+      display: inline-block;
+      background: var(--oliva);
+      color: var(--blanco);
+      font-weight: 700;
+      font-size: 0.76rem;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+    .resp-area {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid var(--verde-gris);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: #fcfdf9;
+      resize: vertical;
+    }
+    .footer-note {
+      background: #f8faf5;
+      border-top: 2px solid var(--azul-claro);
+      padding: 12px 24px;
+      font-size: 0.8rem;
+      color: #475569;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="guiaRoot" class="marco">
+    <header class="header">
+      <div class="header-left">
+        <div class="logo-badge">COLEGIO<br/>MONTANO</div>
+        <div>
+          <div class="inst-tag">Colegio Montano · Guía Interactiva · Quinto Bachillerato en Mercadotecnia · Unidad I</div>
+          <h1>Guía Interactiva · Plan 01/07 — 1. Periodismo</h1>
+          <p>Periodismo: géneros periodísticos, historia en Guatemala y leyes a favor</p>
+        </div>
+      </div>
+      <button class="btn-fs" type="button" onclick="toggleFullScreen()">&#9974; Pantalla Completa</button>
+    </header>
+
+    <div class="sub-bar">
+      <div><strong>Docente:</strong> Brenda Hidalgo</div>
+      <div><strong>Curso:</strong> Comunicación · <strong>Carrera:</strong> Quinto Bachillerato en Mercadotecnia · <strong>Ciclo:</strong> 2027</div>
+      <div><strong>Periodo:</strong> 11 de enero al 5 de marzo · <strong>Fecha editable:</strong> <input class="date-input" type="date" value="2027-01-11" aria-label="Fecha editable" /></div>
+      <div><strong>Plan asociado:</strong> plan_01_tema_01.html</div>
+    </div>
+
+    <nav class="tabs" role="tablist" aria-label="Secciones de la guía interactiva">
+      <button class="tab-btn active" type="button" onclick="openTab(event, 'g-teoria')">Teoría</button>
+      <button class="tab-btn" type="button" onclick="openTab(event, 'g-ejemplos')">Ejemplos (15)</button>
+      <button class="tab-btn" type="button" onclick="openTab(event, 'g-ejercicios')">Ejercicios (15)</button>
+      <button class="tab-btn" type="button" onclick="openTab(event, 'g-reflexion')">Reflexión</button>
+      <button class="tab-btn" type="button" onclick="openTab(event, 'g-evaluacion')">Evaluación</button>
+    </nav>
+
+    <section id="g-teoria" class="tab-panel active">
+      <h3 class="section-sub">Fundamentación Conceptual y Propósito de la Sesión</h3>
+      <div class="cards-grid">
+        
+        <div class="card">
+          <span class="badge-nivel">Fundamento 1</span>
+          <h3>Géneros periodísticos</h3>
+          <p>Se agrupan habitualmente en informativos (noticia, reportaje objetivo), interpretativos/híbridos (crónica, entrevista, reportaje interpretativo) y de opinión (editorial, columna, artículo de opinión, crítica). En mercadotecnia y comunicación corporativa ayudan a distinguir hechos verificables de posturas o narrativas persuasivas.</p>
+        </div>
+        <div class="card">
+          <span class="badge-nivel">Fundamento 2</span>
+          <h3>Historia del periodismo en Guatemala</h3>
+          <p>Abarca desde los primeros impresos y hojas volantes en la época colonial y la Gaceta de Guatemala hasta el desarrollo de la prensa escrita, radial, televisiva y digital, con figuras y etapas clave en la conformación de la opinión pública guatemalteca.</p>
+        </div>
+        <div class="card">
+          <span class="badge-nivel">Fundamento 3</span>
+          <h3>Leyes a favor del periodismo</h3>
+          <p>En el marco constitucional y legal guatemalteco, la libertad de emisión del pensamiento, el acceso a la información pública y la Ley de Emisión del Pensamiento protegen el ejercicio periodístico responsable, los derechos de autor/fuentes y el debate público.</p>
+        </div>
+        <div class="card">
+          <span class="badge-nivel">Sesión 1 de 7 · Unidad I</span>
+          <h3>Enfoque de la Clase y Conexión Profesional</h3>
+          <p><strong>Enfoque:</strong> Clasificación de géneros periodísticos, hitos de la historia del periodismo en Guatemala y leyes que respaldan la libertad de expresión y el periodismo.</p>
+          <p><strong>Hábito Montano:</strong> Ética comunicativa, objetividad y rigor en el manejo de información</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="g-ejemplos" class="tab-panel">
+      
+    <h3 class="section-sub">Nivel Básico (5 ejemplos resueltos)</h3>
+    <div class="cards-grid">
+      
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Básico · Ejemplo 1</span>
+              <h4>Distinción de género informativo vs. opinión</h4>
+              <p><strong>Planteamiento:</strong> Una nota breve que reporta la inauguración de una feria comercial con datos verificables frente a una columna que valora el impacto de la campaña.</p>
+              <p><strong>Desarrollo modelo:</strong> La nota informativa prioriza hechos comprobables y objetividad; la columna expresa una valoración argumentada firmada por su autor.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Básico · Ejemplo 2</span>
+              <h4>Identificación de crónica o entrevista</h4>
+              <p><strong>Planteamiento:</strong> Un relato secuencial con ambientación y detalles de un evento o un diálogo estructurado con una fuente experta.</p>
+              <p><strong>Desarrollo modelo:</strong> La crónica combina narración y observación directa; la entrevista construye sentido a partir de preguntas y respuestas relevantes.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Básico · Ejemplo 3</span>
+              <h4>Hito histórico de la prensa en Guatemala</h4>
+              <p><strong>Planteamiento:</strong> Reconocer la importancia de la imprenta y las primeras publicaciones periódicas en la circulación de ideas en Guatemala.</p>
+              <p><strong>Desarrollo modelo:</strong> La imprenta y los primeros periódicos permitieron difundir información y debate más allá del círculo oral inmediato.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Básico · Ejemplo 4</span>
+              <h4>Principio de libertad de emisión del pensamiento</h4>
+              <p><strong>Planteamiento:</strong> Expresar ideas y opiniones sin censura previa dentro de los límites legales y el respeto a los derechos de terceros.</p>
+              <p><strong>Desarrollo modelo:</strong> Garantiza el flujo de información y el pluralismo en una sociedad democrática.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Básico · Ejemplo 5</span>
+              <h4>Responsabilidad y veracidad informativa</h4>
+              <p><strong>Planteamiento:</strong> Verificar datos y citar fuentes antes de difundir información pública o comercial.</p>
+              <p><strong>Desarrollo modelo:</strong> La credibilidad periodística y comunicacional depende de la exactitud y el respaldo verificable.</p>
+            </div>
+    </div>
+    <h3 class="section-sub">Nivel Intermedio (5 ejemplos resueltos)</h3>
+    <div class="cards-grid">
+      
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Intermedio · Ejemplo 1</span>
+              <h4>Clasificación de un texto periodístico mixto</h4>
+              <p><strong>Planteamiento:</strong> Un reportaje o crónica que narra un proceso de emprendimiento local incorporando testimonios y contexto histórico.</p>
+              <p><strong>Desarrollo modelo:</strong> Integra datos factuales, observación en campo y articulación narrativa sin perder el rigor sobre los hechos.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Intermedio · Ejemplo 2</span>
+              <h4>Evolución de formatos periodísticos en Guatemala</h4>
+              <p><strong>Planteamiento:</strong> Comparar cómo la prensa tradicional convivió con la radio, la televisión y los medios digitales guatemaltecos.</p>
+              <p><strong>Desarrollo modelo:</strong> Cada medio transformó la inmediatez, el alcance y el lenguaje del periodismo manteniendo funciones centrales.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Intermedio · Ejemplo 3</span>
+              <h4>Relación entre leyes de prensa y trabajo en mercadotecnia</h4>
+              <p><strong>Planteamiento:</strong> Analizar por qué conocer las leyes de libre emisión del pensamiento y veracidad importa al redactar comunicados o campañas.</p>
+              <p><strong>Desarrollo modelo:</strong> Evita publicidad engañosa, difamación o vulneración de derechos en la comunicación pública y comercial.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Intermedio · Ejemplo 4</span>
+              <h4>Identificación de sesgo o enfoque editorial</h4>
+              <p><strong>Planteamiento:</strong> Observar qué hechos se destacan en un titular y cuáles pasan a segundo plano.</p>
+              <p><strong>Desarrollo modelo:</strong> El enfoque editorial influye en la percepción del público sin necesariamente inventar datos.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Intermedio · Ejemplo 5</span>
+              <h4>Uso de fuentes documentales</h4>
+              <p><strong>Planteamiento:</strong> Distinguir entre una fuente oficial, un testimonio directo y un dato estadístico.</p>
+              <p><strong>Desarrollo modelo:</strong> Cruzar fuentes fortalece la precisión y reduce errores de interpretación.</p>
+            </div>
+    </div>
+    <h3 class="section-sub">Nivel Avanzado (5 ejemplos resueltos)</h3>
+    <div class="cards-grid">
+      
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Avanzado · Ejemplo 1</span>
+              <h4>Análisis comparativo de dos géneros sobre un mismo hecho</h4>
+              <p><strong>Planteamiento:</strong> Contrastar cómo abordan un mismo acontecimiento económico o cultural una noticia breve y un artículo de opinión.</p>
+              <p><strong>Desarrollo modelo:</strong> Se analizan estructura, tono, uso de adjetivos valorativos y función comunicativa.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Avanzado · Ejemplo 2</span>
+              <h4>Valoración histórica del periodismo guatemalteco</h4>
+              <p><strong>Planteamiento:</strong> Explicar cómo las transformaciones tecnológicas y sociales moldearon el quehacer periodístico en Guatemala.</p>
+              <p><strong>Desarrollo modelo:</strong> Se relaciona contexto histórico, medio y función social de la prensa.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Avanzado · Ejemplo 3</span>
+              <h4>Aplicación de marcos legales a un caso comunicativo</h4>
+              <p><strong>Planteamiento:</strong> Evaluar un caso hipotético de difusión de información o campaña frente a principios de libertad de expresión y veracidad.</p>
+              <p><strong>Desarrollo modelo:</strong> Se argumenta el equilibrio entre libertad de expresión, responsabilidad y respeto a derechos.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Avanzado · Ejemplo 4</span>
+              <h4>Redacción de titular y entrada informativa</h4>
+              <p><strong>Planteamiento:</strong> Sintetizar un hecho relevante en un titular claro y un primer párrafo con los datos esenciales.</p>
+              <p><strong>Desarrollo modelo:</strong> Prioriza claridad, precisión y relevancia informativa.</p>
+            </div>
+
+            <div class="card-ejemplo">
+              <span class="badge-nivel">Nivel Avanzado · Ejemplo 5</span>
+              <h4>Síntesis integradora del tema</h4>
+              <p><strong>Planteamiento:</strong> Redactar un párrafo breve que vincule géneros periodísticos, historia en Guatemala y garantías legales.</p>
+              <p><strong>Desarrollo modelo:</strong> Articula los tres ejes del tema con precisión conceptual.</p>
+            </div>
+    </div>
+    </section>
+
+    <section id="g-ejercicios" class="tab-panel">
+      
+    <h3 class="section-sub">Nivel Básico (5 ejercicios prácticos · Respuesta Autónoma)</h3>
+    <div class="cards-grid">
+      
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Básico · Ejercicio 1</span>
+              <h4>Distinción de género informativo vs. opinión</h4>
+              <p>Una nota breve que reporta la inauguración de una feria comercial con datos verificables frente a una columna que valora el impacto de la campaña. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_bas_1" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Básico · Ejercicio 2</span>
+              <h4>Identificación de crónica o entrevista</h4>
+              <p>Un relato secuencial con ambientación y detalles de un evento o un diálogo estructurado con una fuente experta. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_bas_2" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Básico · Ejercicio 3</span>
+              <h4>Hito histórico de la prensa en Guatemala</h4>
+              <p>Reconocer la importancia de la imprenta y las primeras publicaciones periódicas en la circulación de ideas en Guatemala. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_bas_3" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Básico · Ejercicio 4</span>
+              <h4>Principio de libertad de emisión del pensamiento</h4>
+              <p>Expresar ideas y opiniones sin censura previa dentro de los límites legales y el respeto a los derechos de terceros. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_bas_4" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Básico · Ejercicio 5</span>
+              <h4>Responsabilidad y veracidad informativa</h4>
+              <p>Verificar datos y citar fuentes antes de difundir información pública o comercial. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_bas_5" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+    </div>
+    <h3 class="section-sub">Nivel Intermedio (5 ejercicios prácticos · Respuesta Autónoma)</h3>
+    <div class="cards-grid">
+      
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Intermedio · Ejercicio 1</span>
+              <h4>Clasificación de un texto periodístico mixto</h4>
+              <p>Un reportaje o crónica que narra un proceso de emprendimiento local incorporando testimonios y contexto histórico. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_int_1" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Intermedio · Ejercicio 2</span>
+              <h4>Evolución de formatos periodísticos en Guatemala</h4>
+              <p>Comparar cómo la prensa tradicional convivió con la radio, la televisión y los medios digitales guatemaltecos. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_int_2" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Intermedio · Ejercicio 3</span>
+              <h4>Relación entre leyes de prensa y trabajo en mercadotecnia</h4>
+              <p>Analizar por qué conocer las leyes de libre emisión del pensamiento y veracidad importa al redactar comunicados o campañas. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_int_3" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Intermedio · Ejercicio 4</span>
+              <h4>Identificación de sesgo o enfoque editorial</h4>
+              <p>Observar qué hechos se destacan en un titular y cuáles pasan a segundo plano. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_int_4" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Intermedio · Ejercicio 5</span>
+              <h4>Uso de fuentes documentales</h4>
+              <p>Distinguir entre una fuente oficial, un testimonio directo y un dato estadístico. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_int_5" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+    </div>
+    <h3 class="section-sub">Nivel Avanzado (5 ejercicios prácticos · Respuesta Autónoma)</h3>
+    <div class="cards-grid">
+      
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Avanzado · Ejercicio 1</span>
+              <h4>Análisis comparativo de dos géneros sobre un mismo hecho</h4>
+              <p>Contrastar cómo abordan un mismo acontecimiento económico o cultural una noticia breve y un artículo de opinión. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_adv_1" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Avanzado · Ejercicio 2</span>
+              <h4>Valoración histórica del periodismo guatemalteco</h4>
+              <p>Explicar cómo las transformaciones tecnológicas y sociales moldearon el quehacer periodístico en Guatemala. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_adv_2" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Avanzado · Ejercicio 3</span>
+              <h4>Aplicación de marcos legales a un caso comunicativo</h4>
+              <p>Evaluar un caso hipotético de difusión de información o campaña frente a principios de libertad de expresión y veracidad. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_adv_3" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Avanzado · Ejercicio 4</span>
+              <h4>Redacción de titular y entrada informativa</h4>
+              <p>Sintetizar un hecho relevante en un titular claro y un primer párrafo con los datos esenciales. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_adv_4" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+
+            <div class="card-ejercicio">
+              <span class="badge-nivel">Nivel Avanzado · Ejercicio 5</span>
+              <h4>Síntesis integradora del tema</h4>
+              <p>Redactar un párrafo breve que vincule géneros periodísticos, historia en Guatemala y garantías legales. Responde y justifica de manera autónoma.</p>
+              <textarea id="ej_adv_5" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta y justificación autónoma..."></textarea>
+            </div>
+    </div>
+    </section>
+
+    <section id="g-reflexion" class="tab-panel">
+      <h3 class="section-sub">Preguntas de Reflexión Crítica (Respuesta Autónoma)</h3>
+      
+        <div class="card" style="margin-bottom:14px;">
+          <span class="badge-nivel">Reflexión Crítica #1</span>
+          <h3>¿Por qué distinguir con claridad entre un género informativo y uno de opinión es clave para un futuro profesional de la mercadotecnia?</h3>
+          <textarea id="ref_1" class="resp-area" rows="3" placeholder="Redacta aquí tu reflexión personal de forma autónoma..."></textarea>
+        </div>
+        <div class="card" style="margin-bottom:14px;">
+          <span class="badge-nivel">Reflexión Crítica #2</span>
+          <h3>¿Qué enseñanza deja la historia del periodismo en Guatemala sobre el valor de informar con responsabilidad?</h3>
+          <textarea id="ref_2" class="resp-area" rows="3" placeholder="Redacta aquí tu reflexión personal de forma autónoma..."></textarea>
+        </div>
+        <div class="card" style="margin-bottom:14px;">
+          <span class="badge-nivel">Reflexión Crítica #3</span>
+          <h3>¿Cómo protegen las leyes a favor del periodismo tanto al comunicador como al ciudadano?</h3>
+          <textarea id="ref_3" class="resp-area" rows="3" placeholder="Redacta aquí tu reflexión personal de forma autónoma..."></textarea>
+        </div>
+    </section>
+
+    <section id="g-evaluacion" class="tab-panel">
+      <h3 class="section-sub">Evaluación Formativa (Respuesta Autónoma)</h3>
+      
+        <div class="card-ejercicio" style="margin-bottom:14px;">
+          <span class="badge-nivel">Evaluación Formativa · Ítem 1</span>
+          <h4>Refuerzo conceptual 1</h4>
+          <p>Explica con tus palabras la diferencia entre géneros informativos, interpretativos y de opinión.</p>
+          <textarea id="ev_1" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta autónoma y sustento..."></textarea>
+        </div>
+        <div class="card-ejercicio" style="margin-bottom:14px;">
+          <span class="badge-nivel">Evaluación Formativa · Ítem 2</span>
+          <h4>Refuerzo conceptual 2</h4>
+          <p>Resume un aspecto clave de la historia del periodismo en Guatemala y su impacto comunicativo.</p>
+          <textarea id="ev_2" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta autónoma y sustento..."></textarea>
+        </div>
+        <div class="card-ejercicio" style="margin-bottom:14px;">
+          <span class="badge-nivel">Evaluación Formativa · Ítem 3</span>
+          <h4>Refuerzo conceptual 3</h4>
+          <p>Menciona y explica el alcance de una ley o garantía a favor del periodismo y la libre expresión.</p>
+          <textarea id="ev_3" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta autónoma y sustento..."></textarea>
+        </div>
+        <div class="card-ejercicio" style="margin-bottom:14px;">
+          <span class="badge-nivel">Evaluación Formativa · Ítem 4</span>
+          <h4>Aplicación básica</h4>
+          <p>Clasifica un ejemplo periodístico breve indicando su género y propósito principal.</p>
+          <textarea id="ev_4" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta autónoma y sustento..."></textarea>
+        </div>
+        <div class="card-ejercicio" style="margin-bottom:14px;">
+          <span class="badge-nivel">Evaluación Formativa · Ítem 5</span>
+          <h4>Aplicación intermedia</h4>
+          <p>Explica cómo el enfoque o las fuentes influyen en la credibilidad de un texto periodístico.</p>
+          <textarea id="ev_5" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta autónoma y sustento..."></textarea>
+        </div>
+        <div class="card-ejercicio" style="margin-bottom:14px;">
+          <span class="badge-nivel">Evaluación Formativa · Ítem 6</span>
+          <h4>Aplicación avanzada</h4>
+          <p>Analiza un caso comunicativo o comercial aplicando criterios de género periodístico y respaldo legal/ético.</p>
+          <textarea id="ev_6" class="resp-area" rows="3" placeholder="Escribe aquí tu respuesta autónoma y sustento..."></textarea>
+        </div>
+    </section>
+
+    <footer class="footer-note">
+      <div><strong>Archivo de guía:</strong> guia_01_tema_01.html · <strong>Plan asociado:</strong> plan_01_tema_01.html · <strong>Sesión:</strong> 1/7</div>
+      <div>Colegio Montano · Comunicación · Quinto Bachillerato en Mercadotecnia · Unidad I (2027)</div>
+    </footer>
+  </div>
+
+  <script>
+    function openTab(evt, panelId) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(panelId).classList.add('active');
+      if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
+    }
+
+    function toggleFullScreen() {
+      const elem = document.getElementById('guiaRoot');
+      if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) elem.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+  </script>
+</body>
+</html>
